@@ -1,0 +1,10 @@
+const express=require('express');
+const router=express.Router();
+const { createbrand, updatebrand, deletebrand, getbrand, getallbrand } = require('../controller/brandCtrl');
+const {authMiddleware, isAdmin}=require('../middlewares/authMiddlewares');
+router.post('/',authMiddleware,isAdmin,createbrand);
+router.put('/:id',authMiddleware,isAdmin,updatebrand);
+router.get('/:id',getbrand);
+router.get('/',getallbrand);
+router.delete('/:id',authMiddleware,isAdmin,deletebrand);
+module.exports=router;
