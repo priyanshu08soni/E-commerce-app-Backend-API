@@ -12,7 +12,6 @@ const createProduct = asyncHandler(async (req, res) => {
       req.body.slug = slugify(req.body.title);
     }
     const newProduct = await Product.create(req.body);
-    console.log(newProduct);
     res.json(newProduct);
   } catch (error) {
     throw new Error(error);
