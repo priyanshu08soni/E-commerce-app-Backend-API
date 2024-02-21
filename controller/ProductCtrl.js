@@ -11,7 +11,7 @@ const createProduct = asyncHandler(async (req, res) => {
     if (req.body.title) {
       req.body.slug = slugify(req.body.title);
     }
-    const newProduct = await Product.create(req.body);
+    const newProduct = (await Product.create(req.body)).populate('images');
     res.json(newProduct);
   } catch (error) {
     throw new Error(error);
