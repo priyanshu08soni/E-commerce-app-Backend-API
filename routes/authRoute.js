@@ -26,6 +26,8 @@ const {
   updateOrdreStatus,
   getAllOrders,
   getOrderByUserId,
+  removeProductFromCart,
+  updateProductQuantityFromCart,
 } = require("../controller/userCtrl");
 const router = express.Router();
 router.post("/register", createUser);
@@ -62,7 +64,9 @@ router.post("/cart/cash-order",authMiddleware,createOrder);
 //authentication bt token
 router.get("/:id", authMiddleware, isAdmin, getaUser);
 
-router.delete("/empty-cart",authMiddleware,emptyCart)
+router.delete("/update-product-cart/:cartItemId/:newQuantity",authMiddleware,updateProductQuantityFromCart);
+router.delete("/delete-product-cart/:cartItemId",authMiddleware,removeProductFromCart);
+router.delete("/empty-cart",authMiddleware,emptyCart);
 
 //delete a user
 router.delete("/:id", deleteaUser);
