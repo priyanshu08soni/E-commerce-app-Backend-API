@@ -29,6 +29,7 @@ const {
   removeProductFromCart,
   updateProductQuantityFromCart,
 } = require("../controller/userCtrl");
+const { checkout, paymentVerification } = require("../controller/paymentCtrl");
 const router = express.Router();
 router.post("/register", createUser);
 router.post("/forgot-password-token",forgotPasswordToken);
@@ -56,9 +57,11 @@ router.get("/logout", logout);
 //single user
 router.get("/wishlist", authMiddleware, getWishlist);
 router.get("/cart", authMiddleware, getUserCart);
+router.post("/order/checkout", authMiddleware, checkout);
+router.post("/order/paymentVerification", authMiddleware, paymentVerification);
 router.post("/cart/applycoupon",authMiddleware,applyCoupon);
 
-router.post("/cart/cash-order",authMiddleware,createOrder);
+router.post("/cart/create-order",authMiddleware,createOrder);
 
 //without admin then use admin functionality.
 //authentication bt token
