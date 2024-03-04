@@ -11,41 +11,34 @@ var orderSchema = new mongoose.Schema(
     shippingInfo:{
       firstName:{
         type:String,
-        required:true,
       },
       lastName:{
         type:String,
-        required:true,
       },
       address:{
         type:String,
-        required:true,
       },
       city:{
         type:String,
-        required:true,
       },
       state:{
         type:String,
-        required:true,
       },
       other:{
         type:String,
-        required:true,
       },
       pincode:{
         type:Number,
-        required:true,
       }
     },
     paymentInfo:{
       rezorpayOrderId:{
         type:String,
-        required:true
+        requiredPaths:true,
       },
       rezorpayPaymentId:{
         type:String,
-        required:true
+        requiredPaths:true,
       }
     },
     orderItems:[

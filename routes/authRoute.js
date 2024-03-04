@@ -31,6 +31,8 @@ const {
 } = require("../controller/userCtrl");
 const { checkout, paymentVerification } = require("../controller/paymentCtrl");
 const router = express.Router();
+//authroute->userctrl->usermodel tocheck user
+router.post("/login", loginUserCtrl);
 router.post("/register", createUser);
 router.post("/forgot-password-token",forgotPasswordToken);
 router.put("/reset-password/:token",resetPassword);
@@ -39,8 +41,6 @@ router.put("/order/update-order/:id",authMiddleware,isAdmin,updateOrdreStatus);
 
 router.put("/password",authMiddleware,updatePassword)
 
-//authroute->userctrl->usermodel tocheck user
-router.post("/login", loginUserCtrl);
 
 router.post("/admin-login",loginAdmin);
 router.post("/cart",authMiddleware,userCart);
