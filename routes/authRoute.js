@@ -28,6 +28,7 @@ const {
   getOrderByUserId,
   removeProductFromCart,
   updateProductQuantityFromCart,
+  getMyOrders,
 } = require("../controller/userCtrl");
 const { checkout, paymentVerification } = require("../controller/paymentCtrl");
 const router = express.Router();
@@ -48,9 +49,10 @@ router.post("/cart",authMiddleware,userCart);
 
 //all users
 router.get("/all-users", getallUser);
-router.get("/get-orders",authMiddleware, getOrders);
-router.get("/getallorders", authMiddleware,isAdmin,getAllOrders);
-router.post("/getorderbyuser/:id", authMiddleware,isAdmin,getOrderByUserId);
+router.get("/getmyorders",authMiddleware,getMyOrders);
+// router.get("/get-orders",authMiddleware, getOrders);
+// router.get("/getallorders", authMiddleware,isAdmin,getAllOrders);
+// router.post("/getorderbyuser/:id", authMiddleware,isAdmin,getOrderByUserId);
 router.get("/refresh", handleRefreshToken);
 router.get("/logout", logout);
 
