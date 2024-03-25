@@ -450,7 +450,7 @@ const getOrders = asyncHandler(async (req, res) => {
 const getAllOrders = asyncHandler(async (req, res) => {
   try {
     const alluserOrders = await Order.find()
-      .populate("products.product").populate("orderby")
+    .populate("user")
       .exec();
     res.json(alluserOrders);
   } catch (error) {
@@ -484,6 +484,71 @@ const updateOrdreStatus = asyncHandler(async (req, res) => {
     throw new Error(error);
   }
 });
+const getMonthWiseOrderIncome=asyncHandler(async(req,res)=>{
+  let month= ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  let d=new Date();
+  let endDate="";
+  d.setDate(1);
+  for (let index = 1; index < 11; index++) {
+    d.setMonth(d.getMonth()-1)
+    endDate=month[d.getMonth()]+" "+d.getFullYear();
+  }
+  const data=await Order.aggregate([
+    {
+      $match:{
+        createdAt:{
+          $lte:new Date(),
+          $gte:new Date(endDate)
+        }
+      }
+    },
+    {
+      $group:{
+        _id:{
+          month:"$month"
+        },
+        amount:{
+          $sum:"$totalPriceAfterDiscount"
+        },
+        count:{
+          $sum:1
+        }
+      }
+    }]
+  )
+  res.json(data)
+});
+
+const getYearlyTotalOrders=asyncHandler(async(req,res)=>{
+  let month= ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  let d=new Date();
+  let endDate="";
+  d.setDate(1);
+  for (let index = 1; index < 11; index++) {
+    d.setMonth(d.getMonth()-1)
+    endDate=month[d.getMonth()]+" "+d.getFullYear();
+  }
+  const data=await Order.aggregate([
+    {
+      $match:{
+        createdAt:{
+          $lte:new Date(),
+          $gte:new Date(endDate)
+        }
+      }
+    },
+    {
+      $group:{
+        _id:null,
+        count:{
+          $sum:1
+        },
+        amount:{$sum:"$totalPriceAfterDiscount"}
+      }
+    }]
+  )
+  res.json(data)
+})
 
 module.exports = {
   createUser,
@@ -514,5 +579,7 @@ module.exports = {
   removeProductFromCart,
   updateProductQuantityFromCart,
   createOrder,
-  getMyOrders
+  getMyOrders,
+  getMonthWiseOrderIncome,
+  getYearlyTotalOrders
 };
