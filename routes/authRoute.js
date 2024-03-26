@@ -32,6 +32,8 @@ const {
   getMonthWiseOrderIncome,
   getMonthWiseOrderCount,
   getYearlyTotalOrders,
+  getSingleOrder,
+  updateOrder,
 } = require("../controller/userCtrl");
 const { checkout, paymentVerification } = require("../controller/paymentCtrl");
 const router = express.Router();
@@ -55,6 +57,8 @@ router.get("/all-users", getallUser);
 router.get("/getmyorders",authMiddleware,getMyOrders);
 // router.get("/get-orders",authMiddleware, getOrders);
 router.get("/getallorders", authMiddleware,isAdmin,getAllOrders);
+router.put("/updateOrder/:id", authMiddleware,isAdmin,updateOrder);
+router.get("/getaOrder/:id", authMiddleware,isAdmin,getSingleOrder);
 // router.post("/getorderbyuser/:id", authMiddleware,isAdmin,getOrderByUserId);
 router.get("/refresh", handleRefreshToken);
 router.get("/logout", logout);

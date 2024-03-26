@@ -12,6 +12,7 @@ const { generateRefreshToken } = require("../config/refreshToken");
 const jwt = require("jsonwebtoken");
 const { sendEmail } = require("./emailCtrl");
 const crypto = require("crypto");
+const { log } = require("console");
 const createUser = asyncHandler(async (req, res) => {
   //asigning the email that is filled in form to email variable.
   const email = req.body.email;
@@ -457,6 +458,28 @@ const getAllOrders = asyncHandler(async (req, res) => {
     throw new Error(error);
   }
 });
+const updateOrder = asyncHandler(async (req, res) => {
+  const {id}=req.params;
+  try {
+    const toUpdateOrder = await Order.findById(id);
+   
+    toUpdateOrder.orderStatus=req.body.status;
+    await toUpdateOrder.save();
+   
+    res.json(toUpdateOrder);
+  } catch (error) {
+    throw new Error(error);
+  }
+});
+const getSingleOrder = asyncHandler(async (req, res) => {
+  const {id}=req.params;
+  try {
+    const singleOrder = await Order.findOne({_id:id}).populate('orderItems.product').populate('orderItems.color');
+    res.json({singleOrder});
+  } catch (error) {
+    throw new Error(error);
+  }
+});
 const getOrderByUserId = asyncHandler(async (req, res) => {
   const { id } = req.params;
   validateMongoDbId(id);
@@ -581,5 +604,7 @@ module.exports = {
   createOrder,
   getMyOrders,
   getMonthWiseOrderIncome,
-  getYearlyTotalOrders
+  getYearlyTotalOrders,
+  getSingleOrder,
+  updateOrder
 };
