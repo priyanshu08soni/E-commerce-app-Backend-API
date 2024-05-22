@@ -29,23 +29,22 @@ app.use(cors({
     'Access-Control-Allow-Origin':"https://e-commerce-app-frontend-pink.vercel.app",
     preflightContinue:true
 }));
-const headers=new Headers();
-headers.append(Access-Control-Allow-Origin,"https://e-commerce-app-frontend-pink.vercel.app")
+
 //generating response to request
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-app.use('/api/user',authRouter,headers);
-app.use('/api/product',productRouter,headers);
-app.use('/api/blog',blogRouter,headers);
-app.use('/api/prodcategory',prodcategoryRouter,headers);
-app.use('/api/blogcategory',blogcategoryRouter,headers);
-app.use('/api/brand',brandRouter,headers);
-app.use('/api/coupon',couponRouter,headers);
-app.use('/api/color',colorRouter,headers);
-app.use('/api/enquiry',enqRouter,headers);
-app.use('/api/upload',uploadRouter,headers);
+app.use('/api/user',authRouter);
+app.use('/api/product',productRouter);
+app.use('/api/blog',blogRouter);
+app.use('/api/prodcategory',prodcategoryRouter);
+app.use('/api/blogcategory',blogcategoryRouter);
+app.use('/api/brand',brandRouter);
+app.use('/api/coupon',couponRouter);
+app.use('/api/color',colorRouter);
+app.use('/api/enquiry',enqRouter);
+app.use('/api/upload',uploadRouter);
 //after the authentication
 
 app.use(notFound);
