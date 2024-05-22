@@ -24,6 +24,7 @@ app.use(cors({
     origin:"https://e-commerce-app-frontend-pink.vercel.app",
     methods:["POST","GET","PUT","DELETE","OPTIONS"],
     credentials:true,
+    optionsSuccessStatus:true
 }));
 //generating response to request
 app.use(bodyParser.urlencoded({extended:false}));
