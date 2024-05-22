@@ -33,10 +33,10 @@
   "devDependencies": {
     "nodemon": "^3.0.1"
   },
-  "resolutions": {    
-    "ip": "^2.0.1"  
-  }, 
-  "overrides": { 
-    "ip": "^2.0.1" 
+  "resolutions": {
+    "ip": "^2.0.1"
+  },
+  "overrides": {
+    "ip": "^2.0.1"
   }
 }
