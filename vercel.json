@@ -1,0 +1,22 @@
+{
+    "builds":[
+        {
+            "src":"*.js","use":"@vercel/node"
+        }
+    ],
+    "routes":[
+        {
+            "src":"/(.*)",
+            "dest":"/"
+        }
+    ],
+    "headers":[
+
+        {
+            "Access-Control-Allow-Origin": "",
+            "Access-Control-Allow-Methods": ["POST","PUT","GET","DELETE","OPTIONS"],
+            "Access-Control-Allow-Headers": "Content-Type"
+        }
+    ] 
+
+}
