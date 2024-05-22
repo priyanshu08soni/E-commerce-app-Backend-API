@@ -5,7 +5,7 @@ const { createBlog, updateBlog, getaBlog, getAllBlogs, deleteBlog, likeBlog, dis
 const { blogImgResize, uploadPhoto } = require('../middlewares/uploadImages');
 //post->put->get->delete
 const headers=new Headers();
-headers.append(Access-Control-Allow-Origin,"https://e-commerce-app-frontend-pink.vercel.app");
+headers.append('Access-Control-Allow-Origin','https://e-commerce-app-frontend-pink.vercel.app');
 router.post('/',authMiddleware,isAdmin,createBlog);
 router.put(
     "/upload/:id",

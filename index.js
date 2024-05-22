@@ -21,13 +21,10 @@ const cors=require("cors");
 dbConnect();
 app.use(morgan("dev"));
 app.use(cors({
-    "Access-Contorl-Allow-Origin":"https://e-commerce-app-frontend-pink.vercel.app",
+    allowedHeaders:"Access-Control-Allow-Origin",
     origin:"https://e-commerce-app-frontend-pink.vercel.app",
     methods:["POST","GET","PUT","DELETE","OPTIONS"],
     credentials:true,
-    optionsSuccessStatus:true,
-    'Access-Control-Allow-Origin':"https://e-commerce-app-frontend-pink.vercel.app",
-    preflightContinue:true
 }));
 
 //generating response to request
