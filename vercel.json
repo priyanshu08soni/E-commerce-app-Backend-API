@@ -9,14 +9,5 @@
             "src":"/(.*)",
             "dest":"/"
         }
-    ],
-    "headers":[
-
-        {
-            "origin":"https://e-commerce-app-frontend-pink.vercel.app",
-            "Access-Control-Allow-Methods": ["POST","PUT","GET","DELETE","OPTIONS"],
-            "Access-Control-Allow-Headers": "Content-Type"
-        }
-    ] 
-
+    ]
 }
