@@ -21,7 +21,7 @@ const cors=require("cors");
 dbConnect();
 app.use(morgan("dev"));
 app.use(cors({
-    origin:"https://e-commerce-app-frontend-pink.vercel.app/",
+    origin:"https://e-commerce-app-frontend-pink.vercel.app",
     methods:["POST","GET","PUT","DELETE","OPTIONS"],
     credentials:true,
 }));
