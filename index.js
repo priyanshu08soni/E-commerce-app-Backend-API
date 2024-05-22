@@ -30,7 +30,7 @@ app.use(cors({
     preflightContinue:true
 }));
 const headers=new Headers();
-headers.append('Access-Control-Allow-Origin',"https://e-commerce-app-frontend-pink.vercel.app")
+headers.append(Access-Control-Allow-Origin,"https://e-commerce-app-frontend-pink.vercel.app")
 //generating response to request
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
