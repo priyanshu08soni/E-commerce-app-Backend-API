@@ -21,7 +21,7 @@ const cors=require("cors");
 dbConnect();
 const config = {
     headers: {
-      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Origin": "https://e-commerce-app-frontend-pink.vercel.app",
       "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
     }
 };
