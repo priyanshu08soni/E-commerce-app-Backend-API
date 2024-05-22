@@ -19,14 +19,6 @@ const cookieParser=require("cookie-parser");
 const morgan=require("morgan");
 const cors=require("cors");
 dbConnect();
-const config = {
-    headers: {
-      "Access-Control-Allow-Origin": "https://e-commerce-app-frontend-pink.vercel.app",
-      "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
-    }
-};
-  
- 
 app.use(morgan("dev"));
 app.use(cors());
 //generating response to request
@@ -34,16 +26,16 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-app.use('/api/user',authRouter,config);
-app.use('/api/product',productRouter,config);
-app.use('/api/blog',blogRouter,config);
-app.use('/api/prodcategory',prodcategoryRouter,config);
-app.use('/api/blogcategory',blogcategoryRouter,config);
-app.use('/api/brand',brandRouter,config);
-app.use('/api/coupon',couponRouter,config);
-app.use('/api/color',colorRouter,config);
-app.use('/api/enquiry',enqRouter,config);
-app.use('/api/upload',uploadRouter,config);
+app.use('/api/user',authRouter);
+app.use('/api/product',productRouter);
+app.use('/api/blog',blogRouter);
+app.use('/api/prodcategory',prodcategoryRouter);
+app.use('/api/blogcategory',blogcategoryRouter);
+app.use('/api/brand',brandRouter);
+app.use('/api/coupon',couponRouter);
+app.use('/api/color',colorRouter);
+app.use('/api/enquiry',enqRouter);
+app.use('/api/upload',uploadRouter);
 //after the authentication
 
 app.use(notFound);
