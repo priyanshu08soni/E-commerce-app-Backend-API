@@ -19,8 +19,17 @@ const cookieParser=require("cookie-parser");
 const morgan=require("morgan");
 const cors=require("cors");
 dbConnect();
+
 app.use(morgan("dev"));
-app.use(cors());
+app.use(cors({
+    allowedHeaders:{
+        "Access-Control-Allow-Origin": "https://e-commerce-app-frontend-pink.vercel.app",
+        "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
+    },
+    origin:'https://e-commerce-app-frontend-pink.vercel.app', 
+    credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200
+}));
 //generating response to request
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
