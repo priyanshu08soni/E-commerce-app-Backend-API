@@ -22,7 +22,8 @@ dbConnect();
 app.use(morgan("dev"));
 app.use(cors({
     origin:"https://e-commerce-app-frontend-pink.vercel.app",
-    methods:["POST","GET","PUT","DELETE","OPTIONS"]
+    methods:["POST","GET","PUT","DELETE","OPTIONS"],
+    credentials:true,
 }));
 //generating response to request
 app.use(bodyParser.urlencoded({extended:false}));
@@ -44,6 +45,4 @@ app.use('/api/upload',uploadRouter);
 app.use(notFound);
 app.use(errorHandler); 
 
-app.listen(PORT,'0.0.0.0',()=>{
-    console.log(`Server is running at PORT ${PORT}`);
-});
+app.listen("https://e-commerce-app-backend-api.vercel.app");
