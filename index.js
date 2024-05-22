@@ -20,7 +20,9 @@ const morgan=require("morgan");
 const cors=require("cors");
 dbConnect();
 app.use(morgan("dev"));
-app.use(cors());
+app.use(cors({
+    origin:"https://e-commerce-app-frontend-pink.vercel.app/",
+}));
 //generating response to request
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
