@@ -25,7 +25,8 @@ app.use(cors({
     methods:["POST","GET","PUT","DELETE","OPTIONS"],
     credentials:true,
     optionsSuccessStatus:true,
-    "Access-Control-Allow-Origin":"https://e-commerce-app-frontend-pink.vercel.app",
+    'Access-Control-Allow-Origin':"https://e-commerce-app-frontend-pink.vercel.app",
+    preflightContinue:true
 }));
 //generating response to request
 app.use(bodyParser.urlencoded({extended:false}));
